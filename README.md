@@ -9,4 +9,8 @@ If you only plan on running this image, then you only need the following command
 ```bash
 docker run -p 9090:9090 -p 3000:3000 -v /etc/kubernetes:/etc/kubernetes --name instant-etcd-grafana $(docker exec -ti etcd env | grep \/kubernetes | awk '{print "-e", $1}' | paste -s -) -d patrick0057/instant-etcd-grafana
 ```
-Once you have started the image, browse to `http://$etcd-node-ip:3000/` and use admin/admin to login.
+1. Once you have started the image, browse to `http://$etcd-node-ip:3000/` and use admin/admin to login.
+2. Set a new password if you like when prompted
+3. Mouse over the four square icon below the plus sign on the left hand side of your screen then click manage.
+4. Click "Etcd by Prometheus" to view your etcd metrics
+5. Allow some time for metrics to build.
