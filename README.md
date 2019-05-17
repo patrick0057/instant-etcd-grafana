@@ -9,4 +9,4 @@ If you only plan on running this image, then you only need the following command
 ```bash
 docker run -p 9090:9090 -p 3000:3000 -v /etc/kubernetes:/etc/kubernetes --name instant-etcd-grafana $(docker exec -ti etcd env | grep \/kubernetes | awk '{print "-e", $1}' | paste -s -) -d patrick0057/instant-etcd-grafana
 ```
-Once you have started the image, browse to `https://<etcd-node-ip:3000/` and use admin/admin to login.
+Once you have started the image, browse to `https://$etcd-node-ip:3000/` and use admin/admin to login.
