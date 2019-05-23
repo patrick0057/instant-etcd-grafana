@@ -7,7 +7,7 @@ docker build  --no-cache -t patrick0057/instant-etcd-grafana .
 If you are only planning on running this image, then you only need the following command
 ### Run command (must be run on an rke deployed etcd node)
 ```bash
-docker run -p 9090:9090 -p 3000:3000 -v /etc/kubernetes:/etc/kubernetes --name instant-etcd-grafana $(docker inspect etcd | grep -m1 advertise-client-urls | sed -r 's,^.*advertise-client-urls=[^ /]*\/\/([^:]*).*,\1,g') -d patrick0057/instant-etcd-grafana
+docker run -p 9090:9090 -p 3000:3000 -v /etc/kubernetes:/etc/kubernetes --name instant-etcd-grafana -e PENDPOINTIP=$(docker inspect etcd | grep -m1 advertise-client-urls | sed -r 's,^.*advertise-client-urls=[^ /]*\/\/([^:]*).*,\1,g') $(docker exec -ti etcd env | grep \/kubernetes | awk '{print "-e", $1}' | paste -s -) -d patrick0057/instant-etcd-grafana
 ```
 1. Once you have started the image, browse to `http://$etcd-node-ip:3000/` and use admin/admin to login.
 2. Set a new password if you like when prompted
