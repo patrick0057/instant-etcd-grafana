@@ -4,7 +4,7 @@ This docker image will deploy a Prometheus and Grafana setup preconfigured for t
 ```bash
 docker build  --no-cache -t patrick0057/instant-etcd-grafana .
 ```
-If you only plan on running this image, then you only need the following command
+If you are only planning on running this image, then you only need the following command
 ### Run command (must be run on an rke deployed etcd node)
 ```bash
 docker run -p 9090:9090 -p 3000:3000 -v /etc/kubernetes:/etc/kubernetes --name instant-etcd-grafana $(docker exec -ti etcd env | grep \/kubernetes | awk '{print "-e", $1}' | paste -s -) -d patrick0057/instant-etcd-grafana
