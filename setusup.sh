@@ -1,5 +1,5 @@
 #!/bin/bash
-export PENDPOINTIP=$(env | grep \/kubernetes | grep key | sed -e 's/.*etcd-\(.*\)-key.pem/\1/g' | sed -e 's/-/\./g')
+#export PENDPOINTIP=$(env | grep \/kubernetes | grep key | sed -e 's/.*etcd-\(.*\)-key.pem/\1/g' | sed -e 's/-/\./g')
 tar -xvzf /root/prometheus-1.3.1.linux-amd64.tar.gz --directory /tmp/ --strip-components=1
 
 cat > /tmp/test-etcd.yaml <<EOF
